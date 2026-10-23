@@ -1,0 +1,51 @@
+name: ojisan-development
+x-app: &app
+  build: .
+  env_file: .env
+  restart: unless-stopped
+  depends_on:
+    db:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+services:
+  web:
+    <<: *app
+    command: uvicorn ojisan.entrypoints.web:app --host 0.0.0.0 --port 8195
+    ports: ["127.0.0.1:8195:8195"]
+  worker:
+    <<: *app
+    command: celery -A ojisan.workers.celery_app:celery_app worker --loglevel=info
+  beat:
+    <<: *app
+    command: celery -A ojisan.workers.celery_app:celery_app beat --loglevel=info --schedule=/runtime/celerybeat-schedule
+    volumes: ["beat_data:/runtime"]
+  bot:
+    <<: *app
+    command: python -m ojisan.entrypoints.bot
+  admin:
+    <<: *app
+    command: uvicorn ojisan.entrypoints.admin:app --host 0.0.0.0 --port 8196
+    ports: ["127.0.0.1:8196:8196"]
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:?Set POSTGRES_DB}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes: ["postgres_data:/var/lib/postgresql/data"]
+  redis:
+    image: redis:6-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  postgres_data:
+  beat_data:

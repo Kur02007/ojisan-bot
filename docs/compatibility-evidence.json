@@ -1,0 +1,184 @@
+{
+  "upstream_commit": "73d911da26ec25d7834b50c941551bb4a5aa571a",
+  "model_definitions_identical": true,
+  "commands": [
+    "add_twitch",
+    "add_youtube",
+    "language",
+    "remove_twitch",
+    "remove_youtube"
+  ],
+  "legacy_task_names": [
+    "polling_tasks.poll_all_channels",
+    "polling_tasks.poll_channel_live_task",
+    "subscription_tasks.process_due_subscriptions",
+    "subscription_tasks.record_subscription_denial",
+    "subscription_tasks.renew_subscriptions",
+    "subscription_tasks.request_initial_subscription",
+    "subscription_tasks.urgent_subscriptions",
+    "tasks.cleanup_old_logs",
+    "tasks.process_livestream_task",
+    "tasks.verify_members_only_task",
+    "twitch_tasks.ensure_twitch_subscription_task",
+    "twitch_tasks.handle_twitch_revocation_task",
+    "twitch_tasks.process_twitch_stream_offline_task",
+    "twitch_tasks.process_twitch_stream_online_task",
+    "twitch_tasks.reconcile_twitch_subscriptions"
+  ],
+  "cycles": [],
+  "dependencies": {
+    "ojisan.core.config": [],
+    "ojisan.core.i18n": [
+      "ojisan.database.models"
+    ],
+    "ojisan.core.settings_store": [
+      "ojisan.database.models"
+    ],
+    "ojisan.platforms.youtube.webhook_security": [
+      "ojisan.core.config"
+    ],
+    "ojisan.platforms.youtube.feed_logger": [
+      "ojisan.core.config"
+    ],
+    "ojisan.platforms.youtube.feed_parser": [],
+    "ojisan.platforms.youtube.api": [
+      "ojisan.core.config"
+    ],
+    "ojisan.platforms.youtube.live_poller": [
+      "ojisan.core.config"
+    ],
+    "ojisan.platforms.twitch.api": [
+      "ojisan.core.config"
+    ],
+    "ojisan.platforms.twitch.eventsub": [
+      "ojisan.core.config",
+      "ojisan.database.models",
+      "ojisan.platforms.twitch.api"
+    ],
+    "ojisan.database.models": [
+      "ojisan.core.config"
+    ],
+    "ojisan.subscriptions.registration": [
+      "ojisan.core.config",
+      "ojisan.database.models",
+      "ojisan.platforms.twitch.api",
+      "ojisan.platforms.twitch.eventsub",
+      "ojisan.platforms.youtube.api",
+      "ojisan.subscriptions.tasks"
+    ],
+    "ojisan.subscriptions.tasks": [
+      "ojisan.core.config",
+      "ojisan.database.models",
+      "ojisan.workers.celery_app"
+    ],
+    "ojisan.notifications.discord_rest": [
+      "ojisan.core.config",
+      "ojisan.core.i18n"
+    ],
+    "ojisan.notifications.thumbnails": [],
+    "ojisan.workers.youtube_tasks": [
+      "ojisan.core.i18n",
+      "ojisan.database.models",
+      "ojisan.notifications.discord_rest",
+      "ojisan.notifications.thumbnails",
+      "ojisan.platforms.youtube.api",
+      "ojisan.workers.celery_app"
+    ],
+    "ojisan.workers.twitch_tasks": [
+      "ojisan.core.config",
+      "ojisan.core.i18n",
+      "ojisan.database.models",
+      "ojisan.notifications.discord_rest",
+      "ojisan.platforms.twitch.api",
+      "ojisan.platforms.twitch.eventsub",
+      "ojisan.workers.celery_app",
+      "ojisan.workers.youtube_tasks"
+    ],
+    "ojisan.workers.polling_tasks": [
+      "ojisan.core.config",
+      "ojisan.core.settings_store",
+      "ojisan.database.models",
+      "ojisan.notifications.thumbnails",
+      "ojisan.platforms.youtube.api",
+      "ojisan.platforms.youtube.live_poller",
+      "ojisan.workers.celery_app",
+      "ojisan.workers.youtube_tasks"
+    ],
+    "ojisan.workers.celery_app": [
+      "ojisan.core.config"
+    ],
+    "ojisan.discord.bot": [
+      "ojisan.core.config",
+      "ojisan.core.i18n",
+      "ojisan.database.models",
+      "ojisan.platforms.twitch.eventsub",
+      "ojisan.subscriptions.registration",
+      "ojisan.subscriptions.tasks"
+    ],
+    "ojisan.entrypoints.web": [
+      "ojisan.core.config",
+      "ojisan.database.models",
+      "ojisan.platforms.twitch.eventsub",
+      "ojisan.platforms.youtube.feed_logger",
+      "ojisan.platforms.youtube.feed_parser",
+      "ojisan.platforms.youtube.webhook_security",
+      "ojisan.subscriptions.tasks",
+      "ojisan.workers.twitch_tasks",
+      "ojisan.workers.youtube_tasks"
+    ],
+    "ojisan.entrypoints.admin": [
+      "ojisan.admin.router",
+      "ojisan.database.models"
+    ],
+    "ojisan.admin.auth": [
+      "ojisan.core.config"
+    ],
+    "ojisan.admin.channels_api": [
+      "ojisan.admin.channels_service",
+      "ojisan.admin.schemas",
+      "ojisan.database.models",
+      "ojisan.platforms.twitch.eventsub",
+      "ojisan.subscriptions.registration"
+    ],
+    "ojisan.admin.channels_service": [
+      "ojisan.database.models"
+    ],
+    "ojisan.admin.router": [
+      "ojisan.admin.auth",
+      "ojisan.admin.channels_api",
+      "ojisan.admin.schedule_api"
+    ],
+    "ojisan.admin.schedule_api": [
+      "ojisan.admin.schemas",
+      "ojisan.core.config",
+      "ojisan.core.settings_store"
+    ],
+    "ojisan.admin.schemas": [
+      "ojisan.platforms.twitch.eventsub",
+      "ojisan.subscriptions.registration"
+    ]
+  },
+  "excluded_runtime_artifacts": {
+    "raw_feeds.jsonl": {
+      "bytes": 167433,
+      "records": 405,
+      "keys": [
+        "author_name",
+        "channel_id",
+        "link",
+        "published",
+        "raw_xml",
+        "status",
+        "thumbnail_url",
+        "timestamp",
+        "title",
+        "video_id"
+      ]
+    },
+    "celerybeat-schedule": {
+      "bytes": 40960,
+      "header_hex": "cf9a5713001000000010000000000000",
+      "loaded": false
+    }
+  }
+}

@@ -1,0 +1,387 @@
+{
+  "status": "Public publication authorized by user; upload pending",
+  "excluded": [
+    ".astro",
+    ".git",
+    ".pytest_cache",
+    ".venv",
+    ".wrangler",
+    "__pycache__",
+    "build",
+    "dist",
+    "node_modules",
+    "venv"
+  ],
+  "files": [
+    {
+      "path": ".dockerignore",
+      "bytes": 159,
+      "sha256": "0104195055ada9935e9b362b1f144da18b2cd4b60ef9816189af149c2c0dca89"
+    },
+    {
+      "path": ".env.example",
+      "bytes": 641,
+      "sha256": "1c040714196eba7e1ce544d990b309a56b8b247a0be9574a6eec7e1538217295"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 248,
+      "sha256": "e4209bb0291255bd0f353bfa314fb82de672fad770b6f173c397475184e1a102"
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "bytes": 3367,
+      "sha256": "c39efaf9b9a5031a6c020c6f70aeae04c84c10877b4c9ff02ab56418070e04d2"
+    },
+    {
+      "path": "constraints.txt",
+      "bytes": 1480,
+      "sha256": "bcac79929a58c86a544a91d42bedf6965a74f14732298d657aa57704f6149855"
+    },
+    {
+      "path": "docker-compose.yml",
+      "bytes": 1428,
+      "sha256": "f76eadb31a6ce5763b62b1e94e65ed45e61fe78fc3fe9c23b938bc5942b8ab94"
+    },
+    {
+      "path": "Dockerfile",
+      "bytes": 594,
+      "sha256": "0f58dc1a5c85fccd8cc95ed91bbedf2018fcd28d0f04eb88280f6a70ca3663ed"
+    },
+    {
+      "path": "docs/compatibility-evidence.json",
+      "bytes": 5494,
+      "sha256": "29b25850fa90119f7a830292cb0cf9e9fff6fe61aa8ceca5b9fc3e1291c88ec6"
+    },
+    {
+      "path": "docs/DATABASE.md",
+      "bytes": 1410,
+      "sha256": "ee0d34aa48760eb13b1d767078d249ccb40a3b85532df845acfb61150e2b0756"
+    },
+    {
+      "path": "docs/module-map.json",
+      "bytes": 1389,
+      "sha256": "b66fcc967e2d4f80bb2f61c6abf64326cf439edd0512a6a3ff1b4b24d230a97d"
+    },
+    {
+      "path": "docs/OPERATIONS.md",
+      "bytes": 3893,
+      "sha256": "695a3c6fe268665a75c30d8855bc008fa8511c4bc4cb0be0764852afa34ff5ac"
+    },
+    {
+      "path": "docs/test-summary.json",
+      "bytes": 209,
+      "sha256": "6a582180181dff9816945531be7328c33c11ca6af17cf1019a31e367e5a170ff"
+    },
+    {
+      "path": "docs/upstream-TWITCH_EVENTSUB.md",
+      "bytes": 16930,
+      "sha256": "ffcefeda72e3a23ed939d6aefc43b8b83b78be62daa17e9a9ba921e82812f385"
+    },
+    {
+      "path": "MIGRATION.md",
+      "bytes": 4381,
+      "sha256": "afaf95a94973f4e1c40e85407ca4bbe8d4c87a2ca752c46f8df750276d5e6952"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 509,
+      "sha256": "18634b3c59bae6506c7ee242147261446843a7367e68e89694d04503f9c85e1d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6327,
+      "sha256": "2704c374d68d03115a28a5be96fd1781e49b47901bdbe48c9cbdff739644fcd1"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "bytes": 43,
+      "sha256": "33ff5fd88b5a7add7d4c2a15c77ff754e066855c3eaa7113530bacfa0de2d8dc"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 108,
+      "sha256": "332828731d47841f3b6a65b91f41fb064df072ee05a6014b82d212f613ced063"
+    },
+    {
+      "path": "scripts/audit_files.py",
+      "bytes": 1499,
+      "sha256": "c7541b2d0a9af4c3ae052bd94606a4014e51a21ee1b198b9ed8fc11aee435825"
+    },
+    {
+      "path": "scripts/check_import_graph.py",
+      "bytes": 1126,
+      "sha256": "50be56d0459cfe876f7cf77cab87bb1740fddadcd5557ac75cd076f54e17a8b9"
+    },
+    {
+      "path": "scripts/preflight.py",
+      "bytes": 1570,
+      "sha256": "981fe28382f02048895e2033525915a85d19011bfa5825ccd9881d5a6270f17f"
+    },
+    {
+      "path": "SECURITY.md",
+      "bytes": 4219,
+      "sha256": "1935d36f478d467e2ea479c088c31a8fc28c8a2c8014c53074149a4987e7dcb2"
+    },
+    {
+      "path": "src/ojisan/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/ojisan/admin/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/ojisan/admin/auth.py",
+      "bytes": 641,
+      "sha256": "51f92fa4a7bb820cc5a1745a0fc2a3fc02cef8fdb0080672f75e1f385f8eab25"
+    },
+    {
+      "path": "src/ojisan/admin/channels_api.py",
+      "bytes": 3756,
+      "sha256": "f34bda0ab6e1b1a97acf446199b8f6aed3617db8ff20772235a8e1c7f11dd9cf"
+    },
+    {
+      "path": "src/ojisan/admin/channels_service.py",
+      "bytes": 2539,
+      "sha256": "b7a742c4d1da854bbdd86a6e0f24067d04674fa032bec55bc20ac516ee3465ae"
+    },
+    {
+      "path": "src/ojisan/admin/router.py",
+      "bytes": 409,
+      "sha256": "04ae52baa35032684e41182c2272dd8d2b0fca3849ad215aa5a91371f78d8872"
+    },
+    {
+      "path": "src/ojisan/admin/schedule_api.py",
+      "bytes": 849,
+      "sha256": "e161d8832015018c3c5e4a7b86eee19c583500da1a5d6632d4042a835a67b9e9"
+    },
+    {
+      "path": "src/ojisan/admin/schemas.py",
+      "bytes": 2897,
+      "sha256": "a21f18685424f34497457aba6dbb50188367658a1e99f2853478b9196f261ad9"
+    },
+    {
+      "path": "src/ojisan/core/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/ojisan/core/config.py",
+      "bytes": 6120,
+      "sha256": "5ff018ff7028160936c37a7c156fda3305428e4f9c23cbe1c821c0617f216e70"
+    },
+    {
+      "path": "src/ojisan/core/i18n.py",
+      "bytes": 24566,
+      "sha256": "78b7ed347ae4f02bab0040ac93cb0807904031e119f057feca586130fd1e0414"
+    },
+    {
+      "path": "src/ojisan/core/logging_security.py",
+      "bytes": 1584,
+      "sha256": "6915ad740c98099ace019c0f273e43653493cd693820ecacf801c6c4bf7f880c"
+    },
+    {
+      "path": "src/ojisan/core/settings_store.py",
+      "bytes": 906,
+      "sha256": "c6489b47aa41adfa37c1e243da2380ecc6276dce8bca7b0cbfa9daeaebb3853a"
+    },
+    {
+      "path": "src/ojisan/database/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/ojisan/database/models.py",
+      "bytes": 9254,
+      "sha256": "69b5fc0c52b1128483654de7f6b859ad59cb4cd4b2c2e61f84e1d3a069369120"
+    },
+    {
+      "path": "src/ojisan/discord/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/ojisan/discord/bot.py",
+      "bytes": 24798,
+      "sha256": "cbe528f6584d7a301f255cbecd21c912b6f735a0466aa61f0e2a056e9b279354"
+    },
+    {
+      "path": "src/ojisan/entrypoints/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/ojisan/entrypoints/admin.py",
+      "bytes": 1110,
+      "sha256": "93cb89b733deabe0a205cd7200513e5f19bd75ad35e2c9ebd33915bb5f7d84d0"
+    },
+    {
+      "path": "src/ojisan/entrypoints/bot.py",
+      "bytes": 255,
+      "sha256": "5c7b15047a8f5bbd7bb8a65413f5561879d4afd266ebeb207140ec88a910f90e"
+    },
+    {
+      "path": "src/ojisan/entrypoints/web.py",
+      "bytes": 12751,
+      "sha256": "87a0b99ac8100acca158b8d199176a2b046e345e388aa0fac49a8ebec7d3fb10"
+    },
+    {
+      "path": "src/ojisan/notifications/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/ojisan/notifications/discord_rest.py",
+      "bytes": 12115,
+      "sha256": "056a179876b5b5dfe6d5a950f11a8398d2f281d07c99b1df6177bf050b838a4d"
+    },
+    {
+      "path": "src/ojisan/notifications/thumbnails.py",
+      "bytes": 948,
+      "sha256": "fc23fd323ee2ddfa830ed5388ae747f543d4f1ecdf53ae5786e4a62a1058c156"
+    },
+    {
+      "path": "src/ojisan/platforms/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/ojisan/platforms/twitch/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/ojisan/platforms/twitch/api.py",
+      "bytes": 7820,
+      "sha256": "25a505ea302c9815838bbe2542722793c04727e36517c96a2524f0904ba40fb0"
+    },
+    {
+      "path": "src/ojisan/platforms/twitch/eventsub.py",
+      "bytes": 14047,
+      "sha256": "f668918aa82cfaedb7ff170b4bcaa72c2e07b9066abb6f4c630a494cfaeeceab"
+    },
+    {
+      "path": "src/ojisan/platforms/youtube/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/ojisan/platforms/youtube/api.py",
+      "bytes": 16816,
+      "sha256": "11e48fde10796579419a811304f9cac8f27a672ea20a7a3d3c517f7b5fe96866"
+    },
+    {
+      "path": "src/ojisan/platforms/youtube/feed_logger.py",
+      "bytes": 1440,
+      "sha256": "578ec6b361991dc053bfa6f246b567599e5a856fa1fc37ee5c97c760960fbe11"
+    },
+    {
+      "path": "src/ojisan/platforms/youtube/feed_parser.py",
+      "bytes": 1245,
+      "sha256": "de49f5610dba0ebc1a644484005cda22f1e7cb6cb478abeab769b8b113db050c"
+    },
+    {
+      "path": "src/ojisan/platforms/youtube/live_poller.py",
+      "bytes": 2789,
+      "sha256": "13002172fe116ebcd6fb44cf8c6dd24d5fd4f4338dd34d2e58c68a944b44f6cb"
+    },
+    {
+      "path": "src/ojisan/platforms/youtube/webhook_security.py",
+      "bytes": 1325,
+      "sha256": "a29179bc530d0e231e7aab35710a7721c969141c97e517524da5a82468c45d25"
+    },
+    {
+      "path": "src/ojisan/subscriptions/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/ojisan/subscriptions/registration.py",
+      "bytes": 22186,
+      "sha256": "6d0d82e095db165de94c56ca15827bd873b4d2a84c5951f34e77fc21769c4f5e"
+    },
+    {
+      "path": "src/ojisan/subscriptions/tasks.py",
+      "bytes": 16937,
+      "sha256": "54fc47ce4908ed4b608f3c7b06ad2c8cd4bb45b60b2550bca01990318c85f9bc"
+    },
+    {
+      "path": "src/ojisan/workers/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/ojisan/workers/celery_app.py",
+      "bytes": 2532,
+      "sha256": "c3fb622ccf34a17ba914e62b698a5215f7a27141c60a7fa1844af64e1f5efebe"
+    },
+    {
+      "path": "src/ojisan/workers/polling_tasks.py",
+      "bytes": 4247,
+      "sha256": "f2ea258f66dcefe52fa00f159ac2455dd1f187e38b0de31177ab86958778a9ea"
+    },
+    {
+      "path": "src/ojisan/workers/twitch_tasks.py",
+      "bytes": 15819,
+      "sha256": "90d66708218c3a8e58690c0f9ecb9f93a0188be4d55d186886a802755a445af6"
+    },
+    {
+      "path": "src/ojisan/workers/youtube_tasks.py",
+      "bytes": 12835,
+      "sha256": "dab6799b373ac9ed54dcf6ec6a3b30ecaf503d933783a9731fa76dde3b7a0657"
+    },
+    {
+      "path": "tests/conftest.py",
+      "bytes": 675,
+      "sha256": "5d761e54e95d965d95e427eae7931481c91d8fd42389a81abbe92cd046ad1204"
+    },
+    {
+      "path": "tests/test_channel_names.py",
+      "bytes": 10813,
+      "sha256": "9298490c625a805c37174188366754302b66015649fd170c545ac0bebe34a9bf"
+    },
+    {
+      "path": "tests/test_guild_limit.py",
+      "bytes": 17916,
+      "sha256": "f70a9b5faa56824438f58885b88f7f05955440cd22588a327b7a6339582e7416"
+    },
+    {
+      "path": "tests/test_live_poller.py",
+      "bytes": 3466,
+      "sha256": "e1e5a9f5a243ee0fc70b443a27865aaeec9339f76f245359369bc9e6f9bb9167"
+    },
+    {
+      "path": "tests/test_packaging.py",
+      "bytes": 3953,
+      "sha256": "de95d878601fbd93dc6b97a6aa3e06b7cb6bc88d88c626bb1483f1f083cdbb65"
+    },
+    {
+      "path": "tests/test_security_configuration.py",
+      "bytes": 1272,
+      "sha256": "796f6a60b636712bf9d94ea7381a5eb0bdf04493cbefc88094b6562089662880"
+    },
+    {
+      "path": "tests/test_subscription_stability.py",
+      "bytes": 16823,
+      "sha256": "bf015730e2ca0157318ba1e930bb901cf75239a65b7e85deb42788ccc86b13ba"
+    },
+    {
+      "path": "tests/test_twitch_integration.py",
+      "bytes": 62004,
+      "sha256": "5338cbdc44668b4844f97cd1a03021cac655155b018ce494e9046d17f8348b54"
+    },
+    {
+      "path": "tests/test_youtube_handle.py",
+      "bytes": 14194,
+      "sha256": "981b5ed8549e9c9aa0c6d91ea0e43d82813511d07b927e91a324030f30260b10"
+    },
+    {
+      "path": "VERIFICATION.md",
+      "bytes": 3840,
+      "sha256": "d973e8fe9a9562d7d8126494caa7a1eb2e28091c9122aadf5ad32c906bd08be5"
+    }
+  ]
+}

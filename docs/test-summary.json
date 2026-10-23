@@ -1,0 +1,11 @@
+{
+  "tests": 173,
+  "warnings": 43,
+  "errors": 0,
+  "database": "SQLite in-memory",
+  "failures": 0,
+  "external_api": "mocked",
+  "subtests_passed": 47,
+  "passed": 173,
+  "broker": "memory://"
+}

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ojisan-bot"
+version = "0.1.0"
+description = "YouTube and Twitch stream notifications for Discord"
+requires-python = ">=3.12"
+dynamic = ["dependencies"]
+
+[project.scripts]
+ojisan-bot = "ojisan.entrypoints.bot:main"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
