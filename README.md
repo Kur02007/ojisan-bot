@@ -2,17 +2,112 @@
 
 YouTube・Twitchの配信情報を、登録したDiscordサーバーへ届けるPython製Botです。
 
-このディレクトリは、サービスをより安心して使用してもらうために公開しています。
+このリポジトリは、サービスをより安心して使用してもらうために公開しています。
+
+> [!IMPORTANT]
+> このBotのコードは、一部をAIを用いて作成しています。
+> 2年以上のテスト運用を行っていますが、現在も欠陥（不具合）が残っています。通知の遅れ・漏れなどが起きる場合があることをご了承ください。
 
 ## 主な機能
 
 - YouTube WebSubと補助ポーリングによる動画・ライブ情報の検知。
 - Twitch EventSubによる開始通知、終了後のアーカイブリンク更新。
 - `/add_youtube` `/add_twitch` `/remove_youtube` `/remove_twitch`、登録候補の補完。
-- サーバーごとの登録上限（既定はYouTube・Twitch合計20件）。
+- サーバーごとの登録上限（YouTube・Twitch合計20件）。
 - `/language` による日本語・英語・韓国語・中国語の切り替え。
 - Webhook署名検証、購読更新・再試行、通知の重複抑制。
-- 認証付き管理API、実行時のライブポーリング設定。
+
+## 使い方
+
+### 1. Botをサーバーに追加する
+
+Botをサーバーへ招待し、通知を送りたいチャンネルで次の権限を許可してください。
+
+- チャンネルを見る
+- メッセージを送信
+- 埋め込みリンク
+- `@everyone`・`@here`・すべてのロールへのメンション（通知でメンションを飛ばす場合）
+
+コマンドはすべてサーバー内で実行します。DMでは使えません。
+
+### 2. 通知を登録する
+
+**YouTube**
+
+```text
+/add_youtube url:<チャンネルURL・@ハンドル・チャンネルID> channel:<通知先> message:<通知文>
+```
+
+**Twitch**
+
+```text
+/add_twitch url:<チャンネルURL・チャンネル名> channel:<通知先> message:<通知文>
+```
+
+- `channel` を省略すると、コマンドを実行したチャンネルが通知先になります。
+- `message` を省略すると、既定の通知文になります。
+- 登録済みのチャンネルをもう一度登録すると、通知先・通知文が上書きされます。
+- 登録上限はサーバーごとにYouTube・Twitch合計20件です。
+
+### 3. 通知文をカスタマイズする
+
+`message` には次の文字を入れられます。通知時に実際の内容へ置き換わります。
+
+| 入力 | 置き換わる内容 |
+| --- | --- |
+| `{name}` | 配信者名 |
+| `{title}` | 動画・配信のタイトル |
+| `{link}` | 動画・配信のURL |
+
+例：`/add_youtube url:https://www.youtube.com/@example message:{name}さんの配信が始まりました！ {link}`
+
+通知文に `@everyone` または `@here` が含まれていない場合は、末尾に `@everyone` が自動で付きます。
+
+### 4. 届く通知
+
+**YouTube**
+
+- 動画の公開
+- ライブ配信の予約・開始
+- プレミア公開の予約・開始
+- メンバー限定のものは 🔒 付きで通知されます
+
+**Twitch**
+
+- 配信開始時に通知します
+- 配信終了後、通知内のリンクがアーカイブ（VOD）へ差し替わります（アーカイブが公開されていない場合は差し替わりません）
+
+### 5. 登録を解除する
+
+```text
+/remove_youtube channel:<登録済みチャンネル>
+/remove_twitch channel:<登録済みチャンネル>
+```
+
+入力欄に、このサーバーで登録済みのチャンネルが候補として表示されます。
+
+### 6. 言語を変更する
+
+```text
+/language language:<日本語 / English / 한국어 / 中文>
+```
+
+Botの応答と既定の通知文が、選んだ言語に切り替わります（サーバー単位の設定です）。
+
+### コマンド一覧
+
+| コマンド | 内容 |
+| --- | --- |
+| `/add_youtube` | YouTubeチャンネルの通知を登録・更新 |
+| `/add_twitch` | Twitchチャンネルの配信開始通知を登録・更新 |
+| `/remove_youtube` | YouTubeチャンネルの登録を削除 |
+| `/remove_twitch` | Twitchチャンネルの登録を削除 |
+| `/language` | 応答・通知の言語を設定 |
+
+### 補足
+
+- 登録・削除の成功メッセージは、10秒後に自動で消えます。
+- コマンドを実行できるメンバーは、Discordの「サーバー設定 → 連携サービス」から制限できます。
 
 ## 技術とシステム構成
 
@@ -34,7 +129,7 @@ flowchart LR
   C --> P[YouTubeライブ確認・各配信API]
 ```
 
-詳しい処理順は [ARCHITECTURE.md](ARCHITECTURE.md)、移行差分は [MIGRATION.md](MIGRATION.md)、検証の範囲は [VERIFICATION.md](VERIFICATION.md) を参照してください。
+詳しい処理順は [ARCHITECTURE.md](ARCHITECTURE.md)、移行差分は [MIGRATION.md](MIGRATION.md) を参照してください。
 
 ## ディレクトリ
 
@@ -55,56 +150,10 @@ docs/                   処理・DB・タスクの設計資料
 scripts/                開発用検査
 ```
 
-## 安全な開発環境・セットアップ
+## セキュリティ
 
-本番の `.env`、DBダンプ、Redis、Discordトークンを開発環境へコピーしないでください。まず外部接続のないテストを実行できます。
-
-```sh
-python -m venv .venv
-# Windows: .venv\Scripts\activate
-# macOS/Linux: source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r requirements-dev.txt -c constraints.txt
-python -m pip install --no-deps -e .
-python -m pytest -q
-python scripts/check_import_graph.py
-python scripts/audit_files.py
-```
-
-テスト設定は偽の値、SQLiteインメモリDB、Celery memory brokerで固定し、dotenvを無効化します。pytestでは外部HTTPを遮断します。検証に使った依存バージョンは `constraints.txt` に記録しています。これはWindows/Python 3.12での解決結果であり、LinuxでのDockerビルドは別途確認が必要です。
-
-## ローカルサービスの起動
-
-テスト用Botを別途作成してから `.env.example` を `.env` へコピーし、空欄を埋めます。パスワード・APIキーは自分の開発用値を設定します。`DATABASE_URL` は `postgresql://ユーザー:URLエンコードしたパスワード@db:5432/DB名` の形式です。
-
-```sh
-python scripts/preflight.py
-docker compose config --quiet
-docker compose up --build
-```
-
-このComposeは独立した `ojisan-development` プロジェクト・新規ボリュームを使います。Webhookは `127.0.0.1:8195`、管理APIは `127.0.0.1:8196`。実際の購読確認には、開発環境へ到達できる専用の公開URLが必要です。TwitchはHTTPS・443番ポートが必要で、4つのTwitch設定がすべて揃ったときのみ有効です。
-
-コンテナを使わない場合、開発用PostgreSQL/Redisの接続先を設定した別々の端末で起動します。
-
-```sh
-uvicorn ojisan.entrypoints.web:app --host 127.0.0.1 --port 8195
-uvicorn ojisan.entrypoints.admin:app --host 127.0.0.1 --port 8196
-celery -A ojisan.workers.celery_app:celery_app worker --loglevel=info
-celery -A ojisan.workers.celery_app:celery_app beat --loglevel=info
-python -m ojisan.entrypoints.bot
-```
-
-Celeryワーカーの運用環境はLinuxコンテナを想定します。Windowsではモックテストを優先してください。
-
-## 運用・互換性
-
-DBモデルのテーブル・列・制約定義と、15個の既存Celeryタスク名を保持しています。ただし実DBの移行・本番ローリング更新は未実施です。既存キューと並行稼働させず、複製したDBと専用Redisで検証してください。`create_all()` は既存テーブルの列変更を行うマイグレーションではありません。
-
-元スナップショットに管理画面の `static/` が含まれないため、このコピーは管理APIのみ利用可能です。元で参照されているSQLマイグレーションファイルも含まれていません。本番DB互換性の最終確認にはそのファイルと実スキーマの確認が必要です。
-
-公開前の注意・署名設定・ログ管理は [SECURITY.md](SECURITY.md) を確認してください。
+Webhookの署名検証やログからの秘密値除去などを行っています。詳細は [SECURITY.md](SECURITY.md) を参照してください。
 
 ## ライセンス
 
-プロジェクトのライセンスは未設定です。公開前に権利を確認し、採用するライセンスを決定してください。依存パッケージにはそれぞれのライセンスが適用されます。
+プロジェクトのライセンスは未設定です。依存パッケージにはそれぞれのライセンスが適用されます。
